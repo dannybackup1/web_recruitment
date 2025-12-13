@@ -11,14 +11,26 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Job } from '@/lib/types';
-import { Briefcase, MapPin, CircleDollarSign, CalendarDays, Clock } from 'lucide-react';
+import { Briefcase, MapPin, CircleDollarSign, CalendarDays, Clock, Phone, Copy } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 type JobCardProps = {
   job: Job;
-  onApply: (job: Job) => void;
 };
 
-export function JobCard({ job, onApply }: JobCardProps) {
+export function JobCard({ job }: JobCardProps) {
+  const { toast } = useToast();
+
+  const handleCopy = () => {
+    if (job.contactPhone) {
+      navigator.clipboard.writeText(job.contactPhone);
+      toast({
+        title: '复制成功',
+        description: '联系电话已复制到剪贴板。',
+      });
+    }
+  };
+
   return (
     <Card className="flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
@@ -51,9 +63,16 @@ export function JobCard({ job, onApply }: JobCardProps) {
           {job.description}
         </p>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full" onClick={() => onApply(job)}>
-          立即应聘
+      <CardFooter className="flex-col items-stretch gap-3">
+        {job.contactPhone && (
+           <div className="flex items-center justify-center text-center p-3 bg-accent rounded-md">
+             <Phone className="w-5 h-5 mr-3 text-secondary" />
+             <span className="font-bold text-lg text-secondary tracking-wider">{job.contactPhone}</span>
+           </div>
+        )}
+        <Button className="w-full" onClick={handleCopy} disabled={!job.contactPhone}>
+          <Copy className="mr-2 h-4 w-4" />
+          复制联系电话
         </Button>
       </CardFooter>
     </Card>

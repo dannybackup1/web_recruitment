@@ -5,7 +5,6 @@ import type { Job } from '@/lib/types';
 import { mockJobs } from '@/lib/data';
 import { JobSearchFilters } from '@/components/job-search-filters';
 import { JobCard } from '@/components/job-card';
-import { ApplyDialog } from '@/components/apply-dialog';
 
 export default function Home() {
   const [filters, setFilters] = useState({
@@ -13,7 +12,6 @@ export default function Home() {
     type: 'all',
     location: 'all',
   });
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   const filteredJobs = useMemo(() => {
     return mockJobs.filter(job => {
@@ -30,14 +28,6 @@ export default function Home() {
     });
   }, [filters]);
 
-  const handleApply = (job: Job) => {
-    setSelectedJob(job);
-  };
-
-  const handleCloseDialog = () => {
-    setSelectedJob(null);
-  };
-
   return (
     <div className="container mx-auto px-4 py-8 md:px-6 md:py-12">
       <header className="text-center mb-8">
@@ -52,7 +42,7 @@ export default function Home() {
       {filteredJobs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 animate-in fade-in-50">
           {filteredJobs.map(job => (
-            <JobCard key={job.id} job={job} onApply={() => handleApply(job)} />
+            <JobCard key={job.id} job={job} />
           ))}
         </div>
       ) : (
@@ -60,14 +50,6 @@ export default function Home() {
             <h2 className="text-2xl font-semibold text-muted-foreground">没有找到匹配的职位</h2>
             <p className="text-muted-foreground mt-2">请尝试调整您的搜索条件。</p>
         </div>
-      )}
-
-      {selectedJob && (
-        <ApplyDialog
-          job={selectedJob}
-          isOpen={!!selectedJob}
-          onOpenChange={isOpen => !isOpen && handleCloseDialog()}
-        />
       )}
     </div>
   );
