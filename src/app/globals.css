@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 202 71% 95%; /* #EBF5FB */
-    --foreground: 215 28% 17%; /* Dark Blue-Gray */
+    --background: 210 20% 96.1%; /* Light Gray Concrete */
+    --foreground: 215 28% 17%; /* Dark Slate Gray */
 
     --card: 0 0% 100%;
     --card-foreground: 215 28% 17%;
@@ -13,11 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
 
-    --primary: 36 90% 51%; /* #F39C12 Orange */
+    --primary: 217 33% 32%; /* Steel Blue */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 207 67% 53%; /* #3498DB Blue */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 216 28% 54%; /* Medium Slate Gray */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215 24% 32%;
@@ -30,7 +30,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 36 90% 51%; /* Orange for focus rings */
+    --ring: 217 33% 32%; /* Steel Blue for focus rings */
 
     --radius: 0.5rem;
   }
@@ -42,9 +42,9 @@
     --card-foreground: 210 40% 98%;
     --popover: 217 33% 22%;
     --popover-foreground: 210 40% 98%;
-    --primary: 36 90% 51%;
+    --primary: 217 33% 42%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 207 67% 53%;
+    --secondary: 216 28% 34%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 22%;
     --muted-foreground: 215 25% 65%;
@@ -54,7 +54,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217 33% 27%;
     --input: 217 33% 27%;
-    --ring: 36 90% 51%;
+    --ring: 217 33% 42%;
   }
 }
 
