@@ -156,7 +156,7 @@ export function PostJobDialog({ isOpen, onOpenChange }: PostJobDialogProps) {
                 <FormItem>
                   <FormLabel>薪资范围</FormLabel>
                   <FormControl>
-                    <Input placeholder="例如：8000-12000元/月" {...field} />
+                    <Input placeholder="例如：300-500元/天" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
