@@ -53,7 +53,10 @@ export async function createJob(job: Omit<Job, 'id'>): Promise<Job> {
 
   if (mode === 'api') {
     try {
-      const response = await fetch(`${API_BASE_URL}/jobs`, {
+      const baseURL = getAPIBaseURL();
+      const url = baseURL ? `${baseURL}/jobs` : '/api/jobs';
+
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
